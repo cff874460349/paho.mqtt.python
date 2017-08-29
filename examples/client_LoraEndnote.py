@@ -56,5 +56,3 @@ mqttc.connect("172.18.33.194", 1883, 60)
 mqttc.subscribe("0CB16D62C9FB5828/devices/0000000022000003/up", 0)
 
 mqttc.loop_forever()
-
-mqttc.on_message
