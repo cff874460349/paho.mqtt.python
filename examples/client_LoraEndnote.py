@@ -63,7 +63,7 @@ if __name__ == '__main__':
     mqttc.on_subscribe = on_subscribe
 
     try:
-        mqttc.connect('172.18.33.194', 1883, 60)        
+        mqttc.connect_srv('172.18.33.194', 1883, 60)        
         mqttc.loop_forever()
     except KeyboardInterrupt:
         mqttc.disconnect()
