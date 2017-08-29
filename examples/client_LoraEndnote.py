@@ -27,7 +27,7 @@ def on_connect(mqttc, userdata, flags, rc):
 
 
 def on_message(mqttc, userdata, msg):
-    print( "topic:" msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
+    print( "topic:" + msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
 
 
 def on_publish(mqttc, userdata, mid):
