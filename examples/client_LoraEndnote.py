@@ -45,14 +45,25 @@ def on_log(mqttc, obj, level, string):
 # mqttc = mqtt.Client("client-id")
 # but note that the client id must be unique on the broker. Leaving the client
 # id parameter empty will generate a random id for you.
-mqttc = mqtt.Client()
-mqttc.on_message = on_message
-mqttc.on_connect = on_connect
-mqttc.on_publish = on_publish
-mqttc.on_subscribe = on_subscribe
+#mqttc = mqtt.Client()
+#mqttc.on_message = on_message
+#mqttc.on_connect = on_connect
+#mqttc.on_publish = on_publish
+#mqttc.on_subscribe = on_subscribe
 # Uncomment to enable debug messages
 # mqttc.on_log = on_log
-mqttc.connect("172.18.33.194", 1883, 60)
-mqttc.subscribe("0CB16D62C9FB5828/devices/0000000022000003/up", 0)
+#mqttc.connect("172.18.33.194", 1883, 60)
+#mqttc.subscribe("0CB16D62C9FB5828/devices/0000000022000003/up", 0)
 
-mqttc.loop_forever()
+if __name__ == '__main__':
+    client = mqtt.Client()
+    client.on_connect = on_connect
+    client.subscribe("0CB16D62C9FB5828/devices/0000000022000003/up", 0)
+    client.on_message = on_message
+
+    try:
+        client.connect('172.18.33.194', port=1883)
+        
+        client.loop_forever()
+    except KeyboardInterrupt:
+        client.disconnect()
