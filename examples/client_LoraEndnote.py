@@ -23,7 +23,7 @@ import paho.mqtt.client as mqtt
 
 def on_connect(mqttc, userdata, flags, rc):
     print("rc: " + str(rc))
-    client.subscribe("0CB16D62C9FB5828/devices/0000000022000003/up", 0)
+    mqttc.subscribe("0CB16D62C9FB5828/devices/0000000022000003/up", 0)
 
 
 def on_message(mqttc, userdata, msg):
