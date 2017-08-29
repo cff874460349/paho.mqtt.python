@@ -60,9 +60,10 @@ if __name__ == '__main__':
     mqttc = mqtt.Client()
     mqttc.on_connect = on_connect    
     mqttc.on_message = on_message
+    mqttc.on_subscribe = on_subscribe
 
     try:
-        mqttc.connect('172.18.33.194', port=1883)        
+        mqttc.connect('172.18.33.194', 1883, 60)        
         mqttc.loop_forever()
     except KeyboardInterrupt:
         mqttc.disconnect()
