@@ -23,6 +23,7 @@ import paho.mqtt.client as mqtt
 
 def on_connect(mqttc, obj, flags, rc):
     print("rc: " + str(rc))
+    client.subscribe("0CB16D62C9FB5828/devices/0000000022000003/up", 0)
 
 
 def on_message(mqttc, obj, msg):
@@ -57,13 +58,11 @@ def on_log(mqttc, obj, level, string):
 
 if __name__ == '__main__':
     client = mqtt.Client()
-    client.on_connect = on_connect
-    client.subscribe("0CB16D62C9FB5828/devices/0000000022000003/up", 0)
+    client.on_connect = on_connect    
     client.on_message = on_message
 
     try:
-        client.connect('172.18.33.194', port=1883)
-        
+        client.connect('172.18.33.194', port=1883)        
         client.loop_forever()
     except KeyboardInterrupt:
         client.disconnect()
