@@ -27,7 +27,7 @@ def on_connect(mqttc, userdata, flags, rc):
 
 
 def on_message(mqttc, userdata, msg):
-    print(msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
+    print( "topic:" msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
 
 
 def on_publish(mqttc, userdata, mid):
@@ -63,7 +63,7 @@ if __name__ == '__main__':
     mqttc.on_subscribe = on_subscribe
 
     try:
-        mqttc.connect_srv('172.18.33.194', 1883, 60)        
+        mqttc.connect('172.18.33.194', 1883, 60)        
         mqttc.loop_forever()
     except KeyboardInterrupt:
         mqttc.disconnect()
