@@ -30,7 +30,7 @@ def on_message(mqttc, userdata, msg):
     print(msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
 
 
-def on_publish(mqttc, obuserdataj, mid):
+def on_publish(mqttc, userdata, mid):
     print("mid: " + str(mid))
 
 
@@ -57,12 +57,12 @@ def on_log(mqttc, userdata, level, string):
 #mqttc.subscribe("0CB16D62C9FB5828/devices/0000000022000003/up", 0)
 
 if __name__ == '__main__':
-    client = mqtt.Client()
-    client.on_connect = on_connect    
-    client.on_message = on_message
+    mqttc = mqtt.Client()
+    mqttc.on_connect = on_connect    
+    mqttc.on_message = on_message
 
     try:
-        client.connect('172.18.33.194', port=1883)        
-        client.loop_forever()
+        mqttc.connect('172.18.33.194', port=1883)        
+        mqttc.loop_forever()
     except KeyboardInterrupt:
-        client.disconnect()
+        mqttc.disconnect()
