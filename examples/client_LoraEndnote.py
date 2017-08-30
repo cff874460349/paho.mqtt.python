@@ -58,14 +58,18 @@ def on_log(mqttc, obj, level, string):
 
 if __name__ == '__main__':
     mqttc = mqtt.Client()
-    mqttc.on_connect = on_connect    
     mqttc.on_message = on_message
+    mqttc.on_connect = on_connect
+    mqttc.on_publish = on_publish
     mqttc.on_subscribe = on_subscribe
     print("Inited!")
+    mqttc.connect("172.18.33.194", 1883, 60)
+    mqttc.subscribe("0CB16D62C9FB5828/devices/0000000022000003/up", 0)   
+    mqttc.loop_forever()
 
-    try:
-        mqttc.connect("172.18.33.194", port=1883, keepalive=60)
-        mqttc.subscribe("0CB16D62C9FB5828/devices/0000000022000003/up", 0)   
-        mqttc.loop_forever()
-    except KeyboardInterrupt:
-        mqttc.disconnect()
+    #try:
+    #    mqttc.connect("172.18.33.194", port=1883, keepalive=60)
+    #    mqttc.subscribe("0CB16D62C9FB5828/devices/0000000022000003/up", 0)   
+    #    mqttc.loop_forever()
+    #except KeyboardInterrupt:
+    #    mqttc.disconnect()
