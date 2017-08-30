@@ -23,7 +23,7 @@ import paho.mqtt.client as mqtt
 
 def on_connect(mqttc, userdata, flags, rc):
     print("rc: " + str(rc))
-    mqttc.subscribe("0CB16D62C9FB5828/devices/0000000022000003/up", 0)
+    
 
 
 def on_message(mqttc, userdata, msg):
@@ -64,7 +64,8 @@ if __name__ == '__main__':
     print("Inited!")
 
     try:
-        mqttc.connect("www.rjiot.com", port=1883, keepalive=60)        
+        mqttc.connect("www.rjiot.com", port=1883, keepalive=60)
+        mqttc.subscribe("0CB16D62C9FB5828/devices/0000000022000003/up", 0)   
         mqttc.loop_forever()
     except KeyboardInterrupt:
         mqttc.disconnect()
