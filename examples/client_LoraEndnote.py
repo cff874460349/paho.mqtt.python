@@ -61,6 +61,7 @@ if __name__ == '__main__':
     mqttc.on_connect = on_connect    
     mqttc.on_message = on_message
     mqttc.on_subscribe = on_subscribe
+    print("Inited!")
 
     try:
         mqttc.connect('172.18.33.194', 1883, 60)        
