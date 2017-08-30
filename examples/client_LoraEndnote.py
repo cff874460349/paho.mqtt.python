@@ -21,24 +21,24 @@ import context  # Ensures paho is in PYTHONPATH
 import paho.mqtt.client as mqtt
 
 
-def on_connect(mqttc, obj, flags, rc):
+def on_connect(mqttc, userdata, flags, rc):
     print("rc: " + str(rc))
     mqttc.subscribe("0CB16D62C9FB5828/devices/0000000022000003/up", 0)
 
 
-def on_message(mqttc, obj, msg):
+def on_message(mqttc, userdata, msg):
     print( "topic:" + msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
 
 
-def on_publish(mqttc, obj, mid):
+def on_publish(mqttc, userdata, mid):
     print("mid: " + str(mid))
 
 
-def on_subscribe(mqttc, obj, mid, granted_qos):
+def on_subscribe(mqttc, userdata, mid, granted_qos):
     print("Subscribed: " + str(mid) + " " + str(granted_qos))
 
 
-def on_log(mqttc, obj, level, string):
+def on_log(mqttc, userdata, level, string):
     print(string)
 
 
