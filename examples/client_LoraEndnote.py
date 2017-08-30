@@ -64,7 +64,7 @@ if __name__ == '__main__':
     print("Inited!")
 
     try:
-        mqttc.connect('172.18.33.194', 1883, 60)        
+        mqttc.connect('172.18.33.194', 8883, 60)        
         mqttc.loop_forever()
     except KeyboardInterrupt:
         mqttc.disconnect()
