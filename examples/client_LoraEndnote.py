@@ -66,8 +66,8 @@ if __name__ == '__main__':
   
 
     try:
-        a=1
-        a=mqttc.connect("172.18.33.194", port=1883, keepalive=60)
+        a=100
+        a=mqttc.connect("172.18.33.", port=1883, keepalive=60)
         print("a=%d" %a)
         mqttc.subscribe("0CB16D62C9FB5828/devices/0000000022000003/up", 0)   
         mqttc.loop_forever()
