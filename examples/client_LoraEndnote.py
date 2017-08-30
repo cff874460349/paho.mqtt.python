@@ -65,7 +65,7 @@ if __name__ == '__main__':
 
     try:
         mqttc.connect("www.rjiot.com", port=1883, keepalive=60)
-        mqttc.subscribe("0CB16D62C9FB5828/devices/0000000022000003/up", 0)   
+        mqttc.subscribe("0CB16D62C9FB5828/devices/0000000022000003/up#", 0)   
         mqttc.loop_forever()
     except KeyboardInterrupt:
         mqttc.disconnect()
