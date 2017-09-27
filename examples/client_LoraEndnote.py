@@ -82,8 +82,8 @@ if __name__ == '__main__':
             "hardwareType":"IOP-WA(EDU) 1.00",
             "softwareNumber":"M00173906122017",
             "apMode":-1}
-        payload = json.dumps(dataJson)
-        print payload
+        payload = json.dumps(dataJson,sort_keys=False)
+        #print payload
         (rc, mid) = mqttc.publish(topic, payload, qos=1)
         mqttc.loop_forever()
     except KeyboardInterrupt:
