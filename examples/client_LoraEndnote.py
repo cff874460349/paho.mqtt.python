@@ -84,7 +84,7 @@ if __name__ == '__main__':
             "apMode":-1
             }
 
-        (rc, mid) = mqttc.publish("tuple", "bar", qos=2)
+        (rc, mid) = mqttc.publish(topic, payload, qos=1)
         mqttc.loop_forever()
     except KeyboardInterrupt:
         mqttc.disconnect()
