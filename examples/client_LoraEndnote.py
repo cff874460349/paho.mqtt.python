@@ -72,8 +72,7 @@ if __name__ == '__main__':
         mqttc.subscribe("/Thingworx/IOP-88-88-88-88-88-10/config_info", 0)
         print("Publish")
         topic = "/Thingworx/IOP-88-88-88-88-88-10/meta_data"
-        payload = {
-            "type": 2,
+        payload = ("type": 2,
             "deviceType": 3,
             "ipAddr": "1.2.3.4",
             "macAddr": "00-00-00-00-00-01",
@@ -81,8 +80,7 @@ if __name__ == '__main__':
             "softWareVer": "AP_RGOS 11.1(5)B39, Release(04181200)",
             "hardwareType":"IOP-WA(EDU) 1.00",
             "softwareNumber":"M00173906122017",
-            "apMode":-1
-            }
+            "apMode":-1)
 
         (rc, mid) = mqttc.publish(topic, payload, qos=1)
         mqttc.loop_forever()
