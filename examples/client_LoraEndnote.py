@@ -73,16 +73,16 @@ if __name__ == '__main__':
         print("Publish")
         topic = "/Thingworx/IOP-88-88-88-88-88-10/meta_data"
         payload = {
-                “type”: 2,
-                “deviceType”: xx,
-                “ipAddr”: “0.0.0.0”,
-                “macAddr”: “00-00-00-00-00-00”,
-                “serialNum”: “1234942570010”,
-                “softWareVer”: “AP_RGOS 11.1(5)B39, Release(04181200)”,
-                "hardwareType":"IOP-WA(EDU) 1.00”,
-                "softwareNumber":"M00173906122017",
-                "apMode":-1
-                }
+            "type": 2,
+            "deviceType": 3,
+            "ipAddr": "1.2.3.4",
+            "macAddr": "00-00-00-00-00-01",
+            "serialNum": "1234942570010",
+            "softWareVer": "AP_RGOS 11.1(5)B39, Release(04181200)",
+            "hardwareType":"IOP-WA(EDU) 1.00",
+            "softwareNumber":"M00173906122017",
+            "apMode":-1
+            }
 
         (rc, mid) = mqttc.publish("tuple", "bar", qos=2)
         mqttc.loop_forever()
