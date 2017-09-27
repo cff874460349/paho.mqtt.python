@@ -70,9 +70,9 @@ if __name__ == '__main__':
         a=mqttc.connect("192.168.202.172", port=1883, keepalive=60)
         print("a=%d" %a)
         #mqttc.subscribe("574023A670C500A3/devices/0000000000220103/up", 0)
-        mqttc.subscribe("/Thingworx/IOP-88-88-88-88-88-10/config_info", 0)
+        mqttc.subscribe("/Thingworx/IOP-12-34-56-78-91-23/config_info", 0)
         print("Publish")
-        topic = "/Thingworx/IOP-88-88-88-88-88-10/meta_data"
+        topic = "/Thingworx/IOP-12-34-56-78-91-23/meta_data"
         dataJson = {"type": 2,
             "deviceType": 3,
             "ipAddr": "1.2.3.4",
