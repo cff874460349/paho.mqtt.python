@@ -76,7 +76,7 @@ if __name__ == '__main__':
         dataJson = {"type": 2,
             "deviceType": 3,
             "ipAddr": "1.2.3.4",
-            "macAddr": "00-00-00-00-00-01",
+            "macAddr": "12-34-56-78-91-23",
             "serialNum": "1234942570010",
             "softWareVer": "AP_RGOS 11.1(5)B39, Release(04181200)",
             "hardwareType":"IOP-WA(EDU) 1.00",
