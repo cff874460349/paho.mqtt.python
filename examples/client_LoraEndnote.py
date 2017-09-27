@@ -20,7 +20,6 @@
 import context  # Ensures paho is in PYTHONPATH
 import paho.mqtt.client as mqtt
 
-
 def on_connect(mqttc, obj, flags, rc):
     print("rc: " + str(rc))
     
@@ -67,10 +66,25 @@ if __name__ == '__main__':
 
     try:
         a=100
-        a=mqttc.connect("172.18.33.194", port=1883, keepalive=60)
+        a=mqttc.connect("192.168.202.172", port=1883, keepalive=60)
         print("a=%d" %a)
         #mqttc.subscribe("574023A670C500A3/devices/0000000000220103/up", 0)
         mqttc.subscribe("0CB16D62C9FB5828/devices/0000000022000003/up", 0)
+        print("Publish")
+        topic = "/Thingworx/IOP-88-88-88-88-88-10/meta_data"
+        payload = {
+                “type”: 2,
+                “deviceType”: xx,
+                “ipAddr”: “0.0.0.0”,
+                “macAddr”: “00-00-00-00-00-00”,
+                “serialNum”: “1234942570010”,
+                “softWareVer”: “AP_RGOS 11.1(5)B39, Release(04181200)”,
+                "hardwareType":"IOP-WA(EDU) 1.00”,
+                "softwareNumber":"M00173906122017",
+                "apMode":-1
+                }
+
+        (rc, mid) = mqttc.publish("tuple", "bar", qos=2)
         mqttc.loop_forever()
     except KeyboardInterrupt:
         mqttc.disconnect()
