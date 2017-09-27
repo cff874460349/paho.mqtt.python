@@ -69,7 +69,7 @@ if __name__ == '__main__':
         a=mqttc.connect("192.168.202.172", port=1883, keepalive=60)
         print("a=%d" %a)
         #mqttc.subscribe("574023A670C500A3/devices/0000000000220103/up", 0)
-        mqttc.subscribe("0CB16D62C9FB5828/devices/0000000022000003/up", 0)
+        mqttc.subscribe("/Thingworx/IOP-88-88-88-88-88-10/config_info", 0)
         print("Publish")
         topic = "/Thingworx/IOP-88-88-88-88-88-10/meta_data"
         payload = {
