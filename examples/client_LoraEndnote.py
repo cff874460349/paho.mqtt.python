@@ -85,7 +85,7 @@ if __name__ == '__main__':
         dataJson2["hardwareType"]="IRT-WA(EDU) 1.00"
         dataJson2["softwareNumber"]="M00173906122017"
         dataJson2["apMode"]=-1
-        payload_metaData = json.dumps(dataJson_metaData,sort_keys=False)
+        payload_metaData = json.dumps(dataJson2,sort_keys=False)
         #print payload
         topic_isConnected = "/Thingworx/IOP-88-88-88-88-88-11/isConnected"
         (rc, mid) = mqttc.publish(topic_isConnected, 1, qos=1)
