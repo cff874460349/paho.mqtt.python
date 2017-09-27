@@ -71,33 +71,26 @@ if __name__ == '__main__':
         a=mqttc.connect("192.168.202.172", port=1883, keepalive=60)
         print("a=%d" %a)
         #mqttc.subscribe("574023A670C500A3/devices/0000000000220103/up", 0)
-        mqttc.subscribe("/Thingworx/IOP-12-34-56-78-91-23/config_info", 0)
+        mqttc.subscribe("/Thingworx/IOP-88-88-88-88-88-11/config_info", 0)
         print("Publish")
-        topic = "/Thingworx/IOP-12-34-56-78-91-23/meta_data"
-        dataJson = {"type":2,
-        "deviceType":3,
-        "ipAddr":"1.2.3.4",
-        "macAddr":"12-34-56-78-91-23",
-        "serialNum":"1234942570010",
-        "softWareVer":"AP_RGOS 11.1(5)B39, Release(04181200)",
-        "hardwareType":"IRT-WA(EDU) 1.00",
-        "softwareNumber":"M00173906122017",
-        "apMode":-1}
-
-        dataJson1 = OrderedDict([("type",2),("deviceType",3),("ipAddr","1.2.3.4"),("macAddr","12-34-56-78-91-23"),("serialNum","1234942570010"),("softWareVer","AP_RGOS 11.1(5)B39, Release(04181200)"),("hardwareType","IRT-WA(EDU) 1.00"),("softwareNumber","M00173906122017"),("apMode",-1)])
+        topic_metaData = "/Thingworx/IOP-88-88-88-88-88-11/meta_data"        
+        dataJson_metaData = OrderedDict([("type",2),("deviceType",3),("ipAddr","1.2.3.4"),("macAddr","12-34-56-78-91-23"),("serialNum","1234942570010"),("softWareVer","AP_RGOS 11.1(5)B39, Release(04181200)"),("hardwareType","IRT-WA(EDU) 1.00"),("softwareNumber","M00173906122017"),("apMode",-1)])
         dataJson2 = OrderedDict()
         dataJson2["type"]=2
         dataJson2["deviceType"]=3
         dataJson2["ipAddr"]="1.2.3.4"
-        dataJson2["macAddr"]="12-34-56-78-91-23"
+        dataJson2["macAddr"]="88-88-88-88-88-11"
         dataJson2["serialNum"]="1234942570010"
         dataJson2["softWareVer"]="AP_RGOS 11.1(5)B39, Release(04181200)"
         dataJson2["hardwareType"]="IRT-WA(EDU) 1.00"
         dataJson2["softwareNumber"]="M00173906122017"
         dataJson2["apMode"]=-1
-        payload = json.dumps(dataJson2,sort_keys=False)
+        payload_metaData = json.dumps(dataJson_metaData,sort_keys=False)
         #print payload
-        (rc, mid) = mqttc.publish(topic, payload, qos=1)
+        topic_isConnected = "/Thingworx/IOP-88-88-88-88-88-11/isConnected"
+        (rc, mid) = mqttc.publish(topic_isConnected, 1, qos=1)
+        (rc, mid) = mqttc.publish(topic_metaData, payload_metaData, qos=1)
+        
         mqttc.loop_forever()
     except KeyboardInterrupt:
         mqttc.disconnect()
