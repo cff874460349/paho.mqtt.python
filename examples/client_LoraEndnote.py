@@ -83,6 +83,7 @@ if __name__ == '__main__':
             "softwareNumber":"M00173906122017",
             "apMode":-1}
         payload = json.dumps(dataJson)
+        print payload
         (rc, mid) = mqttc.publish(topic, payload, qos=1)
         mqttc.loop_forever()
     except KeyboardInterrupt:
