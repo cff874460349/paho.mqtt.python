@@ -20,6 +20,7 @@
 import context  # Ensures paho is in PYTHONPATH
 import paho.mqtt.client as mqtt
 import json
+from collections import OrderedDict
 
 def on_connect(mqttc, obj, flags, rc):
     print("rc: " + str(rc))
@@ -73,8 +74,18 @@ if __name__ == '__main__':
         mqttc.subscribe("/Thingworx/IOP-12-34-56-78-91-23/config_info", 0)
         print("Publish")
         topic = "/Thingworx/IOP-12-34-56-78-91-23/meta_data"
-        dataJson = {"type":2,"deviceType":3,"ipAddr":"1.2.3.4","macAddr":"12-34-56-78-91-23","serialNum":"1234942570010","softWareVer":"AP_RGOS 11.1(5)B39, Release(04181200)","hardwareType":"IRT-WA(EDU) 1.00","softwareNumber":"M00173906122017","apMode":-1}
-        payload = json.dumps(dataJson,sort_keys=False)
+        dataJson = {"type":2,
+        "deviceType":3,
+        "ipAddr":"1.2.3.4",
+        "macAddr":"12-34-56-78-91-23",
+        "serialNum":"1234942570010",
+        "softWareVer":"AP_RGOS 11.1(5)B39, Release(04181200)",
+        "hardwareType":"IRT-WA(EDU) 1.00",
+        "softwareNumber":"M00173906122017",
+        "apMode":-1}
+
+        dataJson1 = OrderedDict([("type",2),("deviceType",3),("ipAddr","1.2.3.4"),("macAddr","12-34-56-78-91-23"),("serialNum","1234942570010"),("softWareVer","AP_RGOS 11.1(5)B39, Release(04181200)"),("hardwareType","IRT-WA(EDU) 1.00"),("softwareNumber","M00173906122017"),("apMode",-1)])
+        payload = json.dumps(dataJson1,sort_keys=False)
         #print payload
         (rc, mid) = mqttc.publish(topic, payload, qos=1)
         mqttc.loop_forever()
