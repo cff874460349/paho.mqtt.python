@@ -74,7 +74,7 @@ if __name__ == '__main__':
         mqttc.subscribe("/Thingworx/IOP-88-88-88-88-88-11/config_info", 0)
         print("Publish")
         topic_metaData = "/Thingworx/IOP-88-88-88-88-88-11/meta_data"        
-        dataJson_metaData = OrderedDict([("type",2),("deviceType",3),("ipAddr","1.2.3.4"),("macAddr","12-34-56-78-91-23"),("serialNum","1234942570010"),("softWareVer","AP_RGOS 11.1(5)B39, Release(04181200)"),("hardwareType","IRT-WA(EDU) 1.00"),("softwareNumber","M00173906122017"),("apMode",-1)])
+        #dataJson_metaData = OrderedDict([("type",2),("deviceType",3),("ipAddr","1.2.3.4"),("macAddr","12-34-56-78-91-23"),("serialNum","1234942570010"),("softWareVer","AP_RGOS 11.1(5)B39, Release(04181200)"),("hardwareType","IRT-WA(EDU) 1.00"),("softwareNumber","M00173906122017"),("apMode",-1)])
         dataJson2 = OrderedDict()
         dataJson2["type"]=2
         dataJson2["deviceType"]=3
