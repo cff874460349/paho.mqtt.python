@@ -4,14 +4,11 @@
 import os
 import sys
 
-
-import paho.mqtt.client as client
-
 import json
 from collections import OrderedDict
 
 import pytest
-from enum import Enum
+#from enum import Enum
 
 try:
     import paho
@@ -39,12 +36,8 @@ except ImportError:
 
     import paho
     import context  # Ensures paho is in PYTHONPATH
+    import paho.mqtt.client as client
 
-
-class deviceType(Enum):
-    IRT3122 = 1
-    IRT3122CS = 2
-    IRT3112 = 3
 
 class switch(object):
     def __init__(self, value):
@@ -73,11 +66,46 @@ def creat_topic(deviceType, deviceId, action):
         if case(2):
             break
         if case(3):
-            topicHead='/Thingworx/IOP-'
+            topic = '/Thingworx/IOP-'+ deviceId + '/' + action
+            topicRsp = '/Thingworx/IOP-'+ deviceId + '/' + action + '_rsp'
             break
         if case(): 
             print "something else!"
 
-    print topicHead
+    print topic
+
+
+def creat_message(deviceType, deviceId, action, messageId, message):
+    dataJson = OrderedDict()
+    for case in switch(deviceType):
+        if case(1):
+            break
+        if case(2):
+            break
+        if case(3):
+            for case in switch(action):
+                if case('config_info'):                    
+                    dataJson["tagType"]=2
+                    dataJson["message_id"]=messageId
+                    dataJson["message"]=message
+                    dataJson["length"]=len(message)
+                    break
+                if case('firmware_update'):
+                    dataJson["tagType"]=3
+                    dataJson["message_id"]=messageId
+                    dataJson["message"]=message
+                    dataJson["length"]=len(message)
+                    dataJson["fileLength"]=85
+                    break
+            break
+        if case(): 
+            print "something else!"
+    payload_metaData = json.dumps(dataJson2,sort_keys=False)
+    print payload_metaData
+    
+if __name__ == '__main__':
+    message = 'at+covrag=35\r\nat+sigprd=250\r\nat+sigramdly=50\r\nat+lcttype=2\r\nat+mqtthrtint=60\r\nat+led=on\r\nat+bt=on'
+    creat_topic(3, '66-55-44-33-22-13', 'config_info')
+    creat_message(3, '66-55-44-33-22-13', 'config_info', 1, message)
 
 
