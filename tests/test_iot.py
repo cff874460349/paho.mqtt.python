@@ -100,7 +100,7 @@ def creat_message(deviceType, deviceId, action, messageId, message):
             break
         if case(): 
             print "something else!"
-    payload_metaData = json.dumps(dataJson2,sort_keys=False)
+    payload_metaData = json.dumps(dataJson,sort_keys=False)
     print payload_metaData
     
 if __name__ == '__main__':
