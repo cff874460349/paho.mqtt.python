@@ -4,7 +4,7 @@
 import os
 import sys
 
-import context  # Ensures paho is in PYTHONPATH
+
 import paho.mqtt.client as client
 
 import json
@@ -38,6 +38,7 @@ except ImportError:
         sys.path.insert(0, cmd_subfolder)
 
     import paho
+    import context  # Ensures paho is in PYTHONPATH
 
 
 class deviceType(Enum):
