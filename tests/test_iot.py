@@ -36,7 +36,7 @@ except ImportError:
 
     import paho
     import context  # Ensures paho is in PYTHONPATH
-    import paho.mqtt.client as client
+    import paho.mqtt.client as mqtt
 
 
 class switch(object):
@@ -73,6 +73,7 @@ def creat_topic(deviceType, deviceId, action):
             print "something else!"
 
     print topic
+    return topic, topicRsp
 
 
 def creat_message(deviceType, deviceId, action, messageId, message):
@@ -82,15 +83,15 @@ def creat_message(deviceType, deviceId, action, messageId, message):
             break
         if case(2):
             break
-        if case(3):
+        if case(3):#case IRT3112
             for case in switch(action):
-                if case('config_info'):                    
+                if case('config_info'):#配置
                     dataJson["tagType"]=2
                     dataJson["message_id"]=messageId
                     dataJson["message"]=message
                     dataJson["length"]=len(message)
                     break
-                if case('firmware_update'):
+                if case('firmware_update'):#升级
                     dataJson["tagType"]=3
                     dataJson["message_id"]=messageId
                     dataJson["message"]=message
@@ -102,7 +103,35 @@ def creat_message(deviceType, deviceId, action, messageId, message):
             print "something else!"
     payload_metaData = json.dumps(dataJson,sort_keys=False)
     print payload_metaData
+    return payload_metaData
+
+def subscribe_callback(mqttc, obj, msg):
+    print( "topic:" + msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
+    return msg.topic, msg.payload
+
+mqttc = mqtt.Client()
+mqttc.on_message = subscribe_callback
+
+def connet_mqtt_server(host):
+    a=mqttc.connect(host, port=1883, keepalive=60)
     
+def disconnet_mqtt_server():
+    mqttc.disconnect()
+
+def subscribe_topic(deviceType, deviceIdArray, action):
+    for deviceId in deviceIdArray:
+        topic, topic_rsp = creat_message(deviceType, deviceId, action)
+        mqttc.subscribe(topic_rsp, 0)
+
+def publish_topic(deviceType, deviceIdArray, action, testTimes, message):
+    for message_id in range(0, testTimes):
+        for deviceId in deviceIdArray:
+            topic, topic_rsp = creat_message(deviceType, deviceId, action)
+            payload = creat_message(deviceType, deviceId, action, messageId, message)
+            (rc, mid) = mqttc.publish(topic, payload, qos=1)
+        
+        
+
 if __name__ == '__main__':
     message = 'at+covrag=35\r\nat+sigprd=250\r\nat+sigramdly=50\r\nat+lcttype=2\r\nat+mqtthrtint=60\r\nat+led=on\r\nat+bt=on'
     creat_topic(3, '66-55-44-33-22-13', 'config_info')
