@@ -8,6 +8,7 @@ import json
 from collections import OrderedDict
 
 import pytest
+import Queue
 #from enum import Enum
 
 try:
@@ -101,7 +102,7 @@ def creat_message(deviceType, deviceId, action, messageId, message):
             break
         if case(): 
             print "something else!"
-    payload_metaData = json.dumps(dataJson,sort_keys=False)
+    payload_metaData = json.dumps(dataJson, sort_keys=False)
     print payload_metaData
     return payload_metaData
 
