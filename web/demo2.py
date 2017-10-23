@@ -47,10 +47,11 @@ class MainHandler(tornado.web.RequestHandler):
 
 class DelHandler(tornado.web.RequestHandler):
 	def get(self, id=None):
-		#coll = self.application.db.blog
-		#if id:
-			#blog = coll.remove({"id": int(id)})
         self.redirect("/",)
+        #coll = self.application.db.blog
+        #if id:
+            #blog = coll.remove({"id": int(id)})
+        
 
 class BlogHandler(tornado.web.RequestHandler):
 	def get(self, id=None):
