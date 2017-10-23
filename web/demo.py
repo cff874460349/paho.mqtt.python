@@ -12,7 +12,7 @@ from tornado.options import define, options
 
 import pymongo
 
-define("port", default=8002, help="run on the given port", type=int)
+define("port", default=8083, help="run on the given port", type=int)
 
 class Application(tornado.web.Application):
 	def __init__(self):
