@@ -41,7 +41,7 @@ class MainHandler(tornado.web.RequestHandler):
 		#blogs = coll.find().sort("id",pymongo.DESCENDING)
 		self.render(
 			"index.html",
-			#blogs = blogs,
+			blogs = blogs,
 			time = time,
 		)
 
