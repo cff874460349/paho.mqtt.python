@@ -63,9 +63,8 @@ class EditHandler(tornado.web.RequestHandler):
 			#blog = coll.find_one({"id": int(id)})
 		blog['deviceId'] = self.get_argument("deviceId", None)
 		#blog['action'] = self.get_argument("action", None)
-        blog['message'] = self.get_argument("message", None)
-        blogs.append(blog)
-	
+		blog['message'] = self.get_argument("message", None)
+		blogs.append(blog)	
 		self.redirect("/")
 
 class DelHandler(tornado.web.RequestHandler):
