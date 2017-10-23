@@ -50,8 +50,9 @@ class EditHandler(tornado.web.RequestHandler):
 		if id:
 			#coll = self.application.db.blog
 			#blog = coll.find_one({"id": int(id)})
-		self.render("edit.html"#blog = blog
-			)
+		#self.render("edit.html",
+		#	blog = blog
+		#	)
 
 	def post(self, id=None):
 		import time
