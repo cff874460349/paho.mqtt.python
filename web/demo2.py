@@ -13,6 +13,7 @@ from tornado.options import define, options
 import pymongo
 
 define("port", default=8083, help="run on the given port", type=int)
+blogs = []
 
 class Application(tornado.web.Application):
 	def __init__(self):
@@ -50,9 +51,9 @@ class EditHandler(tornado.web.RequestHandler):
 		#if id:
 			#coll = self.application.db.blog
 			#blog = coll.find_one({"id": int(id)})
-		#self.render("edit.html",
-		#	blog = blog
-		#	)
+		self.render("edit.html",
+			blog = blog
+			)
 
 	def post(self, id=None):
 		import time
@@ -60,19 +61,11 @@ class EditHandler(tornado.web.RequestHandler):
 		blog = dict()
 		#if id:
 			#blog = coll.find_one({"id": int(id)})
-		blog['title'] = self.get_argument("title", None)
-		blog['content'] = self.get_argument("content", None)
-		if id:
-			pass
-			#coll.save(blog)
-		else:
-			#last = coll.find().sort("id",pymongo.DESCENDING).limit(1)
-			lastone = dict()
-			for item in last:
-				lastone = item
-			blog['id'] = int(lastone['id']) + 1
-			blog['date'] = int(time.time())
-			#coll.insert(blog)
+		blog['deviceId'] = self.get_argument("deviceId", None)
+		#blog['action'] = self.get_argument("action", None)
+        blog['message'] = self.get_argument("message", None)
+        blogs.append(blog)
+	
 		self.redirect("/")
 
 class DelHandler(tornado.web.RequestHandler):

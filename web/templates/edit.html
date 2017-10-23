@@ -28,11 +28,11 @@
 					{% else%}
 					<form method="post" action="/add">
 					{% end %}
-						<p>文章标题：</p>
-						<input type="text" class="Title" name="title" placeholder="在这里输入你的标题" value="{{ blog.get('title', '') }}" />
-						<p>文章正文：</p>
-						<textarea type="text" class="Article" id="myArticle" name="content" placeholder="在这里输入你的正文">
-							{{ blog.get('content', '') }}
+						<p>设备ID：</p>
+						<input type="text" class="Title" name="deviceId" placeholder="在这里输入设备ID" value="{{ blog.get('deviceId', '') }}" />
+						<p>拷机操作：</p>
+						<textarea type="text" class="Article" id="myArticle" name="message" placeholder="在这里输入你的正文">
+							{{ blog.get('message', '') }}
 						</textarea>
 						<br/>
 						{% if blog.get('id', None) %}

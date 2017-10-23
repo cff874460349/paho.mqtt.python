@@ -97,10 +97,13 @@ class BlogHandler(tornado.web.RequestHandler):
 
 def main():
 	tornado.options.parse_command_line()
-	#http_server = tornado.httpserver.HTTPServer(Application())
-	http_server = tornado.httpserver.HTTPServer()
-	http_server.listen(options.port)
-	tornado.ioloop.IOLoop.instance().start()
+    http_server = tornado.httpserver.HTTPServer(Application())
+	#http_server = tornado.httpserver.HTTPServer()
+    try:    
+        http_server.listen(options.port)
+        tornado.ioloop.IOLoop.instance().start()
+    except KeyboardInterrupt:
+        http_server.stop()
 
 
 if __name__ == "__main__":
