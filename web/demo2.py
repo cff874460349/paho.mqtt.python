@@ -50,7 +50,7 @@ class DelHandler(tornado.web.RequestHandler):
 		#coll = self.application.db.blog
 		if id:
 			#blog = coll.remove({"id": int(id)})
-		self.redirect("/")
+		self.redirect("/",)
 
 class BlogHandler(tornado.web.RequestHandler):
 	def get(self, id=None):
@@ -64,7 +64,7 @@ class BlogHandler(tornado.web.RequestHandler):
 				time = time,
 				)
 		else:
-			self.redirect("/")
+			self.redirect("/",)
 
 def main():
 	tornado.options.parse_command_line()
