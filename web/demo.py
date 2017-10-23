@@ -28,7 +28,7 @@ class Application(tornado.web.Application):
 			static_path=os.path.join(os.path.dirname(__file__), "static"),
 			debug=True,
 			)
-		conn = pymongo.Connection("localhost", 27017)
+		conn = pymongo.MongoClient("localhost", 27017)
 		self.db = conn["demo2"]
 		tornado.web.Application.__init__(self, handlers, **settings)
 
