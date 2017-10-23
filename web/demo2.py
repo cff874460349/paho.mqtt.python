@@ -58,11 +58,12 @@ class EditHandler(tornado.web.RequestHandler):
 		import time
 		#coll = self.application.db.blog
 		blog = dict()
-		if id:
+		#if id:
 			#blog = coll.find_one({"id": int(id)})
 		blog['title'] = self.get_argument("title", None)
 		blog['content'] = self.get_argument("content", None)
 		if id:
+			pass
 			#coll.save(blog)
 		else:
 			#last = coll.find().sort("id",pymongo.DESCENDING).limit(1)
