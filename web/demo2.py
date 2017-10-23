@@ -44,35 +44,6 @@ class MainHandler(tornado.web.RequestHandler):
 			time = time,
 		)
 
-class EditHandler(tornado.web.RequestHandler):
-	def get(self, id=None):
-		blog = dict()
-		#if id:
-			#coll = self.application.db.blog
-			#blog = coll.find_one({"id": int(id)})
-		#self.render("edit.html",
-		#	blog = blog
-		#	)
-
-	def post(self, id=None):
-		import time
-		#coll = self.application.db.blog
-		blog = dict()
-		if id:
-			#blog = coll.find_one({"id": int(id)})
-		blog['title'] = self.get_argument("title", None)
-		blog['content'] = self.get_argument("content", None)
-		if id:
-			#coll.save(blog)
-		else:
-			#last = coll.find().sort("id",pymongo.DESCENDING).limit(1)
-			lastone = dict()
-			for item in last:
-				lastone = item
-			blog['id'] = int(lastone['id']) + 1
-			blog['date'] = int(time.time())
-			#coll.insert(blog)
-		self.redirect("/")
 
 class DelHandler(tornado.web.RequestHandler):
 	def get(self, id=None):
