@@ -28,19 +28,19 @@ class Application(tornado.web.Application):
 			static_path=os.path.join(os.path.dirname(__file__), "static"),
 			debug=True,
 			)
-		conn = pymongo.MongoClient("localhost", 27017)
-		self.db = conn["demo2"]
+		#conn = pymongo.MongoClient("localhost", 27017)
+		#self.db = conn["demo2"]
 		tornado.web.Application.__init__(self, handlers, **settings)
 
 
 class MainHandler(tornado.web.RequestHandler):
 	def get(self):
 		import time
-		coll = self.application.db.blog
-		blogs = coll.find().sort("id",pymongo.DESCENDING)
+		#coll = self.application.db.blog
+		#blogs = coll.find().sort("id",pymongo.DESCENDING)
 		self.render(
 			"index.html",
-			blogs = blogs,
+			#blogs = blogs,
 			time = time,
 		)
 
@@ -48,44 +48,44 @@ class EditHandler(tornado.web.RequestHandler):
 	def get(self, id=None):
 		blog = dict()
 		if id:
-			coll = self.application.db.blog
-			blog = coll.find_one({"id": int(id)})
+			#coll = self.application.db.blog
+			#blog = coll.find_one({"id": int(id)})
 		self.render("edit.html",
 			blog = blog)
 
 	def post(self, id=None):
 		import time
-		coll = self.application.db.blog
+		#coll = self.application.db.blog
 		blog = dict()
 		if id:
-			blog = coll.find_one({"id": int(id)})
+			#blog = coll.find_one({"id": int(id)})
 		blog['title'] = self.get_argument("title", None)
 		blog['content'] = self.get_argument("content", None)
 		if id:
-			coll.save(blog)
+			#coll.save(blog)
 		else:
-			last = coll.find().sort("id",pymongo.DESCENDING).limit(1)
+			#last = coll.find().sort("id",pymongo.DESCENDING).limit(1)
 			lastone = dict()
 			for item in last:
 				lastone = item
 			blog['id'] = int(lastone['id']) + 1
 			blog['date'] = int(time.time())
-			coll.insert(blog)
+			#coll.insert(blog)
 		self.redirect("/")
 
 class DelHandler(tornado.web.RequestHandler):
 	def get(self, id=None):
-		coll = self.application.db.blog
+		#coll = self.application.db.blog
 		if id:
-			blog = coll.remove({"id": int(id)})
+			#blog = coll.remove({"id": int(id)})
 		self.redirect("/")
 
 class BlogHandler(tornado.web.RequestHandler):
 	def get(self, id=None):
 		import time
-		coll = self.application.db.blog
+		#coll = self.application.db.blog
 		if id:
-			blog = coll.find_one({"id": int(id)})
+			#blog = coll.find_one({"id": int(id)})
 			self.render("blog.html",
 				page_title = "我的博客",
 				blog = blog,
