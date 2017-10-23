@@ -64,7 +64,8 @@ class EditHandler(tornado.web.RequestHandler):
 		blog['deviceId'] = self.get_argument("deviceId", None)
 		#blog['action'] = self.get_argument("action", None)
 		blog['message'] = self.get_argument("message", None)
-		blogs.append(blog)	
+		blogs.append(blog)
+        print blogs
 		self.redirect("/")
 
 class DelHandler(tornado.web.RequestHandler):
