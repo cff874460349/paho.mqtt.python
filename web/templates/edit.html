@@ -29,7 +29,7 @@
 					<form method="post" action="/add">
 					{% end %}
 						<p>设备ID：</p>
-						<input type="text" class="Title" name="deviceId" placeholder="在这里输入设备ID" value="{{ blog.get('deviceId', '') }}" />
+						<input type="text" class="Article" name="deviceId" placeholder="在这里输入设备ID" value="{{ blog.get('deviceId', '') }}" />
 						<p>拷机操作：</p>
 						<textarea type="text" class="Article" id="myArticle" name="message" placeholder="在这里输入你的正文">
 							{{ blog.get('message', '') }}
