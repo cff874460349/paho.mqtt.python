@@ -10,7 +10,7 @@ from collections import OrderedDict
 import pytest
 import Queue
 #from enum import Enum
-
+import paho.mqtt.client as mqtt
 try:
     import paho
 
@@ -37,7 +37,7 @@ except ImportError:
 
     import paho
     import context  # Ensures paho is in PYTHONPATH
-    import paho.mqtt.client as mqtt
+    
 
 
 class switch(object):

@@ -9,6 +9,7 @@ import tornado.ioloop
 import tornado.options
 import tornado.web
 from tornado.options import define, options
+import tests.test_iot as mqtt
 
 import pymongo
 
