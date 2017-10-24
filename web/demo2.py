@@ -9,9 +9,28 @@ import tornado.ioloop
 import tornado.options
 import tornado.web
 from tornado.options import define, options
-import tests.test_iot as mqtt
 
 import pymongo
+
+import sys
+import os
+
+cmd_subfolder = os.path.realpath(
+    os.path.abspath(
+        os.path.join(
+            os.path.split(
+                inspect.getfile(inspect.currentframe())
+            )[0],
+            "..",
+            "tests"
+        )
+    )
+)
+if cmd_subfolder not in sys.path:
+    sys.path.insert(0, cmd_subfolder)
+
+import test_iot as mqtt
+
 
 define("port", default=8083, help="run on the given port", type=int)
 blogs = []
@@ -69,6 +88,7 @@ class EditHandler(tornado.web.RequestHandler):
 		blogs.append(blog)
 		print blogs
 		self.redirect("/")
+        mqtt.publish_topic(3, ['66-55-44-33-22-13'], 'config_info', 1, blog['message'])
 
 class DelHandler(tornado.web.RequestHandler):
 	def get(self, id=None):
