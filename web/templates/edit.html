@@ -30,9 +30,7 @@
 					{% end %}
 						<p>设备ID：</p>
 						<input type="text" class="Title" name="deviceId" placeholder="在这里输入设备ID" value="{{ blog.get('deviceId', '') }}" />
-						<textarea type="text" class="Title" id="myArticle" name="deviceId" placeholder="在这里输入设备ID">
-							{{ blog.get('deviceId', '') }}
-						</textarea>
+						
 						<p>拷机操作：</p>
 						<textarea type="text" class="Article" id="myArticle" name="message" placeholder="在这里输入你的正文">
 							{{ blog.get('message', '') }}
