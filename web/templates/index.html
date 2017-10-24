@@ -18,7 +18,7 @@
 				<div class="content">
 					<div class="Title">
 						<p>
-							<a href="/blog/{{ int(blog['deviceId']) }}">{{ blog['deviceId'] }}</a>
+							<a href="/blog/{{blog['deviceId'] }}">{{ blog['deviceId'] }}</a>
 						</p>
 						<p>
 							<span class="Time">{{ time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(blog['date']) ) }}</span>
