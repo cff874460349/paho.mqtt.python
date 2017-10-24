@@ -127,7 +127,7 @@ def subscribe_topic(deviceType, deviceIdArray, action):
 def publish_topic(deviceType, deviceIdArray, action, testTimes, message):
     for message_id in range(0, testTimes):
         for deviceId in deviceIdArray:
-            topic, topic_rsp = creat_message(deviceType, deviceId, action)
+            topic, topic_rsp = creat_topic(deviceType, deviceId, action)
             payload = creat_message(deviceType, deviceId, action, messageId, message)
             (rc, mid) = mqttc.publish(topic, payload, qos=1)
         
