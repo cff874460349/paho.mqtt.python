@@ -134,6 +134,7 @@ def publish_topic(deviceType, deviceIdArray, action, testTimes, message):
         
 
 if __name__ == '__main__':
+    connet_mqtt_server('192.168.202.172')
     message = 'at+covrag=35\r\nat+sigprd=250\r\nat+sigramdly=50\r\nat+lcttype=2\r\nat+mqtthrtint=60\r\nat+led=on\r\nat+bt=on'
     creat_topic(3, '66-55-44-33-22-13', 'config_info')
     creat_message(3, '66-55-44-33-22-13', 'config_info', 1, message)
