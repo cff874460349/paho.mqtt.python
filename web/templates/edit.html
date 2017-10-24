@@ -24,7 +24,7 @@
 				<h1>欢迎访问物联网测试平台</h1>
 				<div class="content">
 					{% if blog.get('id', None) %}
-					<form method="post" action="/edit/{{ int(blog['id']) }}">
+					<form method="post" action="/edit/{{ int(blog['deviceId']) }}">
 					{% else%}
 					<form method="post" action="/add">
 					{% end %}
