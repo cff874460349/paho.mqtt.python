@@ -86,7 +86,7 @@ class EditHandler(tornado.web.RequestHandler):
 		#blog['action'] = self.get_argument("action", None)
 		blog['message'] = self.get_argument("message", None)
 		blog['testTimes'] = self.get_argument("testTimes", None)
-        mqtt.publish_topic(3, ['66-55-44-33-22-13'], 'config_info', 1, blog['message'])
+		mqtt.publish_topic(3, ['66-55-44-33-22-13'], 'config_info', 1, blog['message'])
 		blogs.append(blog)
 		print blogs
 		self.redirect("/")
