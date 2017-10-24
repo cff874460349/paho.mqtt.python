@@ -14,6 +14,7 @@ import pymongo
 
 import sys
 import os
+import inspect
 
 cmd_subfolder = os.path.realpath(
     os.path.abspath(
