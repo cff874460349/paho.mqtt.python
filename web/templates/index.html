@@ -17,14 +17,22 @@
 				{% for blog in blogs %}
 				<div class="content">
 					<div class="Title">
+						<p>设备ID：</p>	
 						<p>
 							<a href="/blog/{{blog['deviceId'] }}">{{ blog['deviceId'] }}</a>
 						</p>
 						
 					</div>
 					<div class="Article">
+						<p>拷机操作：</p>
 						<p>
 							{{ blog['message'] }}
+						</p>
+					</div>
+					<div class="Article">
+						<p>执行次数：</p>
+						<p>
+							{{ blog['testTimes'] }}
 						</p>
 					</div>
 				</div>

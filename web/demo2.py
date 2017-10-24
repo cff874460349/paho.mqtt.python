@@ -64,6 +64,7 @@ class EditHandler(tornado.web.RequestHandler):
 		blog['deviceId'] = self.get_argument("deviceId", None)
 		#blog['action'] = self.get_argument("action", None)
 		blog['message'] = self.get_argument("message", None)
+        blog['testTimes'] = self.get_argument("testTimes", None)
 		blogs.append(blog)
 		print blogs
 		self.redirect("/")
@@ -82,7 +83,7 @@ class BlogHandler(tornado.web.RequestHandler):
 			self.render("blog.html",
 				page_title = "我的博客",
 				#blog = blog,
-				time = time,
+				#time = time,
 				)
 		else:
 			self.redirect("/",)
