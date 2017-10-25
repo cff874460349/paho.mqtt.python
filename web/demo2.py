@@ -68,7 +68,7 @@ class MainHandler(tornado.web.RequestHandler):
 		self.render(
 			"index.html",
 			blogs = blogs,
-			time = time,
+			#time = time,
 		)
 
 class EditHandler(tornado.web.RequestHandler):
@@ -87,17 +87,18 @@ class EditHandler(tornado.web.RequestHandler):
 		blog = dict()
 		#if id:
 			#blog = coll.find_one({"id": int(id)})
+		blog['ServerIP'] = self.get_argument("ServerIP", None)
+		rc = mqtt.connet_mqtt_server(blog['ServerIP'])
 		blog['deviceId'] = self.get_argument("deviceId", None)
 		deviceIdlist = deviceIdTolist(blog['deviceId'])
-		print deviceIdlist
+		#print deviceIdlist
 		#blog['action'] = self.get_argument("action", None)
 		blog['message'] = self.get_argument("message", None)
 		blog['testTimes'] = self.get_argument("testTimes", None)
-		testTimes = int(blog['testTimes'])
-		mqtt.connet_mqtt_server('192.168.202.172')
+		testTimes = int(blog['testTimes'])		
 		mqtt.publish_topic(3, deviceIdlist, 'config_info', testTimes, blog['message'])
 		blogs.append(blog)
-		print blogs
+		#print blogs
 		self.redirect("/")
         
 

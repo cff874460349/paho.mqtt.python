@@ -93,4 +93,4 @@ if __name__ == '__main__':
         
         mqttc.loop_forever()
     except KeyboardInterrupt:
-        mqttc.disconnect()
+        print mqttc.disconnect()
