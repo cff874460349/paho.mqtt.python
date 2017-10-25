@@ -36,6 +36,11 @@ import test_iot as mqtt
 define("port", default=8083, help="run on the given port", type=int)
 blogs = []
 
+def deviceIdTolist(deviceIdStr):
+	deviceIdStr_new = deviceIdStr.replace("\r\n"," ")
+	deviceIdStr_new = deviceIdStr_new.split()
+	return deviceIdStr_new
+
 class Application(tornado.web.Application):
 	def __init__(self):
 		handlers = [
@@ -83,6 +88,8 @@ class EditHandler(tornado.web.RequestHandler):
 		#if id:
 			#blog = coll.find_one({"id": int(id)})
 		blog['deviceId'] = self.get_argument("deviceId", None)
+        deviceIdlist = deviceIdTolist(blog['deviceId'])
+        print deviceIdlist
 		#blog['action'] = self.get_argument("action", None)
 		blog['message'] = self.get_argument("message", None)
 		blog['testTimes'] = self.get_argument("testTimes", None)
