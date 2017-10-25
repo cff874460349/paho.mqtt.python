@@ -88,8 +88,8 @@ class EditHandler(tornado.web.RequestHandler):
 		#if id:
 			#blog = coll.find_one({"id": int(id)})
 		blog['deviceId'] = self.get_argument("deviceId", None)
-        deviceIdlist = deviceIdTolist(blog['deviceId'])
-        print deviceIdlist
+		deviceIdlist = deviceIdTolist(blog['deviceId'])
+		print deviceIdlist
 		#blog['action'] = self.get_argument("action", None)
 		blog['message'] = self.get_argument("message", None)
 		blog['testTimes'] = self.get_argument("testTimes", None)
