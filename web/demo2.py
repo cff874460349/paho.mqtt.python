@@ -98,7 +98,7 @@ class EditHandler(tornado.web.RequestHandler):
 		testTimes = int(blog['testTimes'])		
 		mqtt.publish_topic(3, deviceIdlist, 'config_info', testTimes, blog['message'])
 		blogs.append(blog)
-		#print blogs
+		print blogs
 		self.redirect("/")
         
 

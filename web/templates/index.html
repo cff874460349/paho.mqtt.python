@@ -17,6 +17,12 @@
 				{% for blog in blogs %}
 				<div class="content">
 					<div class="Title">
+						<p>服务器IP：
+							<a href="/blog/{{blog['ServerIP'] }}">{{ blog['ServerIP'] }}</a>
+						</p>
+						
+					</div>
+					<div class="Title">
 						<p>设备ID：</p>	
 						<p>
 							<a href="/blog/{{blog['deviceId'] }}">{{ blog['deviceId'] }}</a>
