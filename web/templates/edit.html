@@ -41,10 +41,11 @@
 						<textarea type="text" class="Article" id="mymessage" name="message" placeholder="在这里输入你的正文">
 							{{ blog.get('message', '') }}
 						</textarea>
-						<p>执行次数：</p>
-						<textarea type="text" class="connect" id="mytestTimes" name="testTimes" placeholder="在这里输入执行次数">
-							{{ blog.get('testTimes', '') }}
-						</textarea>
+						<p>执行次数：
+							<textarea type="text" class="connect" id="mytestTimes" name="testTimes" placeholder="在这里输入执行次数">
+								{{ blog.get('testTimes', '') }}
+							</textarea>
+						</p>
 						<br/>
 						{% if blog.get('id', None) %}
 						<input type="submit" class="Article Button Submit" value="修    改"/>
