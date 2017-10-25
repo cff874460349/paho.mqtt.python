@@ -13,25 +13,7 @@
 			</a>
 			<div class="container">
 				<h1>欢迎访问物联网测试平台</h1>
-				{% autoescape None %}
-				<div class="content">
-					{% if blog.get('id', None) %}
-					<form method="post" action="/edit/{{ int(blog['deviceId']) }}">
-					{% else%}
-					<form method="post" action="/add">
-					{% end %}
-						<p>服务器地址：</p>				
-						<textarea type="text" class="Article" id="myArticle" name="ServerIP" placeholder="在这里输入服务器IP">
-							{{ blog.get('ServerIP', '') }}
-						</textarea>						
-						<br/>
-						{% if blog.get('id', None) %}
-						<input type="submit" class="Article Button Submit" value="修    改"/>
-						{% else%}
-						<input type="submit" class="Article Button Submit" value="发    布"/>
-						{% end %}
-					</form>
-				</div>
+				{% autoescape None %}				
 				{% for blog in blogs %}
 				<div class="content">
 					<div class="Title">

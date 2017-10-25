@@ -106,12 +106,32 @@ def creat_message(deviceType, deviceId, action, messageId, message):
     print payload_metaData
     return payload_metaData
 
-def subscribe_callback(mqttc, obj, msg):
+connect_status = 0
+def on_connect(mqttc, obj, flags, rc):
+    print("rc: " + str(rc))
+
+def on_disconnect(mqttc, obj, flags, rc):
+    print("rc: " + str(rc))
+
+def on_message(mqttc, obj, msg):
     print( "topic:" + msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
     return msg.topic, msg.payload
 
+def on_publish(mqttc, obj, mid):
+    print("mid: " + str(mid))
+
+def on_subscribe(mqttc, obj, mid, granted_qos):
+    print("Subscribed: " + str(mid) + " " + str(granted_qos))
+    
+def on_log(mqttc, obj, level, string):
+    print(string)
+
 mqttc = mqtt.Client()
-mqttc.on_message = subscribe_callback
+mqttc.on_disconnect = on_disconnect
+mqttc.on_message = on_message
+mqttc.on_connect = on_connect
+mqttc.on_publish = on_publish
+mqttc.on_subscribe = on_subscribe
 
 def connet_mqtt_server(host):
     rc = mqttc.connect(host, port=1883, keepalive=60)

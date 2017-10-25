@@ -28,16 +28,21 @@
 					{% else%}
 					<form method="post" action="/add">
 					{% end %}
+						<p>服务器IP：				
+							<textarea type="text" class="connect" id="myServerIP" name="ServerIP" placeholder="在这里输入服务器IP">
+								{{ blog.get('ServerIP', '') }}
+							</textarea>
+						</p>
 						<p>设备ID：</p>				
-						<textarea type="text" class="Article" id="myArticle" name="deviceId" placeholder="在这里输入设备ID">
+						<textarea type="text" class="Article" id="mydeviceId" name="deviceId" placeholder="在这里输入设备ID">
 							{{ blog.get('deviceId', '') }}
 						</textarea>
 						<p>拷机操作：</p>
-						<textarea type="text" class="Article" id="myArticle" name="message" placeholder="在这里输入你的正文">
+						<textarea type="text" class="Article" id="mymessage" name="message" placeholder="在这里输入你的正文">
 							{{ blog.get('message', '') }}
 						</textarea>
 						<p>执行次数：</p>
-						<textarea type="text" class="Article" id="myArticle" name="testTimes" placeholder="在这里输入执行次数">
+						<textarea type="text" class="Article" id="mytestTimes" name="testTimes" placeholder="在这里输入执行次数">
 							{{ blog.get('testTimes', '') }}
 						</textarea>
 						<br/>
