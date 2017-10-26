@@ -40,9 +40,9 @@
 							{{ blog.get('message', '') }}
 						</textarea>
 						<p>执行次数：
-							<textarea type="text" class="connect" id="mytestTimes" name="testTimes" placeholder="在这里输入执行次数">
+							<input type="text" class="connect" id="mytestTimes" name="testTimes" placeholder="在这里输入执行次数">
 								{{ blog.get('testTimes', '') }}
-							</textarea>
+							</input>
 						</p>
 						<br/>
 						{% if blog.get('id', None) %}
